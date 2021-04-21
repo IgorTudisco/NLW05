@@ -25,9 +25,13 @@ import "./database";
 
 // Import routs
 
-import { routes } from "../src/routes.js";
+import { routes } from "./routes";
 
 const app = express();
+
+// Enable json
+
+app.use(express.json());
 
 // Passing routes
 

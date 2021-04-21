@@ -29,7 +29,7 @@ class Setting {
     update_at: Date;
 
     @CreateDateColumn()
-    creates_at: Date;
+    created_at: Date;
 
     constructor(){
 
