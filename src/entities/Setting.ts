@@ -1,6 +1,6 @@
 // import functions from typeorm.
 
-import { Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryColumn } from "typeorm"
+import { Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryColumn } from "typeorm";
 
 // Import o uuid
 // The V version is a kind of type of special id
@@ -38,13 +38,13 @@ class Setting {
 
         if(!this.id){
             this.id = uuid()
-        }
-    }
+        };
+    };
 
-}
+};
 
 // Export
 
-export { Setting }
+export { Setting };
 
 // I need to removing "//" in tsconfig.json from ("emitDecoratorMetadata": true) and ("experimentalDecorators": true)  

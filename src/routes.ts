@@ -5,7 +5,9 @@ import { Router } from "express";
 
 // Importing controller
 
-import { SenttingsController } from "./Controller/SenttingsController"
+import { SettingsController } from "./Controller/SettingsController";
+import { UsersController } from "./Controller/UserController";
+import { MessagesController } from "./Controller/MessageController";
 
 const routes = Router();
 
@@ -22,10 +24,19 @@ const routes = Router();
     } 
 */
 
-// Instantiating SenttingsController
+// Instantiating Controller
 
-const senttingsController = new SenttingsController();
+const settingsController = new SettingsController();
+const usersController = new UsersController();
+const messageController = new MessagesController();
 
-routes.post("/settings", senttingsController.create);
+// Routes page 
+
+routes.post("/settings", settingsController.create);
+
+routes.post("/users", usersController.create);
+
+routes.post("/messages", messageController.create);
+routes.get("/messages/:id", messageController.showByUser);
 
 export { routes };
