@@ -61,6 +61,46 @@ class SettingsService {
 
     };
 
+    // Find user.
+
+    async findByUsername(username: string){
+
+        const settings = await this.settingsRepository.findOne({
+
+            username,
+
+        });
+
+        return settings;
+
+    };
+
+    // Custom chat.
+
+    async update(username: string, chat: boolean){
+
+        await this.settingsRepository
+        .createQueryBuilder()
+
+        // Passing uor entity in parameters.
+
+        .update(Setting)
+
+        // Passing what we want to changing.
+
+        .set({ chat })
+
+        // Where username is equal the name of user.
+
+        .where("username = :username", {
+
+            username,
+
+        })
+        .execute();
+
+    };
+
 };
 
 // Exporting class

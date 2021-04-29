@@ -40,6 +40,35 @@ class SettingController {
 
         };
 
+    };
+
+    // Get user name to custom configuration the way user want. 
+
+    async findByUsername(request: Request, response: Response) {
+
+        const { username } = request.params;
+
+        const settingsServices = new SettingsService();
+
+        const settings = await settingsServices.findByUsername(username);
+
+        return response.json(settings);
+
+    }
+
+    // Custom chat.
+
+    async update(request: Request, response: Response) {
+
+        const { username } = request.params;
+        const { chat } = request.body;
+
+        const settingsServices = new SettingsService();
+
+        const settings = await settingsServices.update(username, chat);
+
+        return response.json(settings);
+
     }
 
 };

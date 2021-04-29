@@ -40,6 +40,20 @@ class ConnectionsServices {
 
         return connection;
         
+    };
+
+    // Creating method how is find uor connection
+
+    async findByUserId(user_id: string){
+
+        const connection = await this.connectionRepositories.findOne({
+
+            user_id,
+
+        });
+
+        return connection;
+
     }
 
 };

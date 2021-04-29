@@ -48,7 +48,16 @@ class UsersServices {
 
     };
 
+    // Creating method find by email.
+    
+    async findByEmail(email: string) {
 
+        const user = await this.userRepository.findOne({
+        email,
+        });
+        return user;
+
+    };
 
 };
 
