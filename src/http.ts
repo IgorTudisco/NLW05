@@ -55,13 +55,21 @@ app.engine("html", require("ejs").renderFile);
 
 app.set("view egine", "html");
 
-// Routes test
+// Routes client
 
 app.get("/pages/client", (request, response) => {
 
     return response.render("html/client.html")
 
-})
+});
+
+// Routes admin
+
+app.get("/pages/admin", (request, response) => {
+
+    return response.render("html/admin.html")
+
+});
 
 // Creating server http
 

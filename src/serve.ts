@@ -6,6 +6,10 @@ import { http } from "./http";
 
 import "./Websocket/client";
 
+// Import only admin file.
+
+import "./Websocket/admin";
+
 // Changing to http file.
 
 // Passing the door and a message.

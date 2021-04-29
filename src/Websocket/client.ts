@@ -42,6 +42,8 @@ io.on("connection", (socket) => {
 
     const messageServices = new MessagesServices();
     
+    // Saving a connection with socket_id, user_id.
+    
     socket.on("Client_first_access", async (params) => {
 
         // Getting the socket id
@@ -118,9 +120,13 @@ io.on("connection", (socket) => {
             user_id,
 
         });
-       
-        // Saving a connection with socket_id, user_id.
 
+        // Emit event call all messages.
+
+        const allMessages = await  messageServices.listByUser(user_id);
+
+        socket.emit("client_list_all_messages", allMessages);
+       
     });
 
 });
