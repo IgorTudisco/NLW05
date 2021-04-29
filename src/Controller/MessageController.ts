@@ -1,9 +1,9 @@
 // Controller of message 
 
 import { Request, Response } from "express";
-import { MessagesServices } from "../services/MessageServices";
+import { MessagesServices } from "../services/MessagesServices";
 
-class MessagesController {
+class MessageController {
 
     async create(request: Request,  response: Response,) {
 
@@ -37,4 +37,4 @@ class MessagesController {
 
 };
 
-export { MessagesController };
+export { MessageController };

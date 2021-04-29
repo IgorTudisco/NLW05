@@ -3,7 +3,7 @@
 import { Request, Response } from "express";
 import { UsersServices } from "../services/UsersServices";
 
-class UsersController {
+class UserController {
 
     // The ".....: Promise<Response>" guarantee that function are a return.
 
@@ -20,4 +20,4 @@ class UsersController {
     };
 };
 
-export { UsersController };
+export { UserController };

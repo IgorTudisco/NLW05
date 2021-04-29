@@ -1,8 +1,9 @@
 // Our services message
 
+import { v4 as uuid } from "uuid";
 import { getCustomRepository, Repository } from "typeorm";
-import { MessagesRepository } from "../repositories/MessageRepositories";
-import { Messages } from "../entities/Message";
+import { MessageRepository } from "../repositories/MessageRepositories";
+import { Message } from "../entities/Message";
 
 
 // The admin_id is optional because in the first message probably we don't have a attendant yet.
@@ -19,16 +20,15 @@ class MessagesServices {
 
     // Creating a attribute private and your constructor.
 
-    private messagesRepository: Repository<Messages>;
+    private messageRepository: Repository<Message>;
     constructor() {
 
-        this.messagesRepository = getCustomRepository(MessagesRepository);
+        this.messageRepository = getCustomRepository(MessageRepository);
 
     };
     
-    async create({ admin_id, text, user_id }: IMessageCreate) {
-
-        const message = this.messagesRepository.create({
+    async create({ admin_id, text, user_id, }: IMessageCreate) {
+        const message = this.messageRepository.create({
         
             admin_id,
             text,
@@ -36,7 +36,13 @@ class MessagesServices {
 
         });
 
-        await this.messagesRepository.save(message);
+        // insert id
+
+        if (!message.id) {            
+            message.id = uuid();
+        };
+        
+        await this.messageRepository.save(message);
 
         return message;
 
@@ -45,7 +51,7 @@ class MessagesServices {
     async listByUser(user_id: string){
 
 
-        const list = await this.messagesRepository.find({
+        const list = await this.messageRepository.find({
 
             where: { user_id },
             relations: ["user"],

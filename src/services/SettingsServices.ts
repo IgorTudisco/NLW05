@@ -4,7 +4,7 @@
 
 import { getCustomRepository, Repository } from "typeorm";
 import { Setting } from "../entities/Setting";
-import { SettingsRepository } from "../repositories/SettingsRepositories";
+import { SettingsRepository } from "../repositories/SettingRepositories";
 
 // Creating interface
 

@@ -2,10 +2,10 @@
 
 import { Entity, PrimaryColumn, CreateDateColumn, Column, JoinColumn, ManyToOne } from "typeorm";
 import { v4 as uuid } from "uuid";
-import { Users } from "./User";
+import { User } from "./User";
 
 @Entity("messages")
-class Messages {
+class Message {
     
     @PrimaryColumn()
     id: string;
@@ -21,8 +21,8 @@ class Messages {
     // Many message to one Users.
 
     @JoinColumn({ name: "user_id" })
-    @ManyToOne( () => Users )
-    user: Users;
+    @ManyToOne( () => User )
+    user: User;
     
     // The db who will do our relationship.
 
@@ -43,4 +43,4 @@ class Messages {
 
 };
 
-export { Messages };
+export { Message };

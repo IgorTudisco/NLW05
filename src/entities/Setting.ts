@@ -9,7 +9,7 @@ import { v4 as uuid } from "uuid";
 
 // Passing the name of my table
 
-// Class from settings
+// Class from setting
 
 @Entity("settings")
 class Setting {

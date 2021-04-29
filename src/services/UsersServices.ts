@@ -1,16 +1,16 @@
 // Business rule
 
 import { getCustomRepository, Repository } from "typeorm";
-import { Users } from "../entities/User";
-import { UsersRepository } from "../repositories/UsersRepositories"
+import { User } from "../entities/User";
+import { UserRepository } from "../repositories/UserRepositories"
 
 class UsersServices {
 
-    private usersRepository: Repository<Users>;
+    private userRepository: Repository<User>;
 
     constructor() {
 
-        this.usersRepository =  getCustomRepository(UsersRepository);
+        this.userRepository =  getCustomRepository(UserRepository);
 
     }
 
@@ -18,7 +18,7 @@ class UsersServices {
 
         // Checking if users exist
 
-        const userExists = await this.usersRepository.findOne({
+        const userExists = await this.userRepository.findOne({
 
             email
 
@@ -34,19 +34,21 @@ class UsersServices {
 
         // If false 
 
-        const user = this.usersRepository.create({
+        const user = this.userRepository.create({
 
             email,
 
         });
 
-        await this.usersRepository.save(user);
+        await this.userRepository.save(user);
 
         // Return User
 
-        return user;
+       return user;
 
-    }
+    };
+
+
 
 };
 

@@ -1,42 +1,13 @@
+// Import http
 
-/*
-    The express comes without types, So we need install that.
-    However, we to use this code yarn add @types/express -D.
-    We use this D because we use that in a develop path.
-*/
+import { http } from "./http";
 
-import express from "express";
+// Import only client file.
 
-// Import database
+import "./Websocket/client";
 
-/*
-
-    In typescript we don't need to refer a file,
-    we need to refer only folder and he
-    understanding thar our reference is index.ts.
-
-    When we type this code in this way
-    he understanding we want to
-    creating our DB too.
-
-*/
-
-import "./database";
-
-// Import routs
-
-import { routes } from "./routes";
-
-const app = express();
-
-// Enable json
-
-app.use(express.json());
-
-// Passing routes
-
-app.use(routes);
+// Changing to http file.
 
 // Passing the door and a message.
 
-app.listen(3333, () => console.log("Server is running on port 3333"));
+http.listen(3333, () => console.log("Server is running on port 3333"));

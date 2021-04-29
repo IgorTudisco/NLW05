@@ -9,7 +9,7 @@ import { SettingsService } from "../services/SettingsServices"
 
 // Class responsible for create and save the data in DB.
 
-class SettingsController {
+class SettingController {
 
     // Pass my types
 
@@ -44,7 +44,7 @@ class SettingsController {
 
 };
 
-export { SettingsController as SettingsController };
+export { SettingController };
 
 
 // embuscadoproximonivel
