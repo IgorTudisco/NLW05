@@ -74,6 +74,3 @@ class SettingController {
 };
 
 export { SettingController };
-
-
-// embuscadoproximonivel
