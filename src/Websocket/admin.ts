@@ -65,6 +65,7 @@ io.on("connect", async (socket) => {
 
             text,
             socket_id: socket.id,
+            
         });
 
     });

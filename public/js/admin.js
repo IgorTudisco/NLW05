@@ -7,6 +7,10 @@ const socket = io();
 
 let connectionsArrayUsers = [];
 
+// Creating a variable to receive online call.
+
+let connectionInSupport = [];
+
 // Listen event
 
 socket.on("admin_list_all_users", (connections) => {
@@ -43,6 +47,10 @@ socket.on("admin_list_all_users", (connections) => {
 function call(id) {
 
   const connection = connectionsArrayUsers.find((connection) => connection.socket_id === id);
+
+  // When you find the connection, put it into the call array.
+
+  connectionInSupport.push(connection);
 
   const template = document.getElementById("admin_template").innerHTML;
 
@@ -125,14 +133,13 @@ function sendMessage(id) {
 
   createDiv.className = "admin_message_admin";
   createDiv.innerHTML = `Attendant: <span>${params.text}</span>`;
-  createDiv.innerHTML += `<span class = "admin_date>${params.text}</span>`;
-  createDiv.innerHTML += `<span class = "admin_date${dayjs().format()}`;
+  createDiv.innerHTML += `<span class = "admin_date${dayjs().format("DD/MM/YYYY HH:mm:ss")}`;
 
   divMessage.appendChild(createDiv);
 
   text.value = "";
 
-}
+};
 
 socket.on("admin_receive_message", (data) => {
 

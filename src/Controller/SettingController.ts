@@ -27,7 +27,7 @@ class SettingController {
 
             // Because I used unstructured, ew need to pass the parameters in this way.
 
-            const settings = await settingsServices.create({chat, username});
+            const settings = await settingsServices.create({ chat, username });
 
             return response.json(settings);
 
@@ -35,7 +35,9 @@ class SettingController {
         catch (err) {
 
             return response.status(400).json({
+
                 message: err.message,
+                
             });
 
         };

@@ -24,7 +24,6 @@ export class CreateMessages1619225343038 implements MigrationInterface {
                     {
                         name: "user_id",
                         type: "uuid",
-                        isNullable: true
                     },
                     {
                         name: "text",

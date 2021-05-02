@@ -1,6 +1,6 @@
 // Our services message
 
-import { v4 as uuid } from "uuid";
+// import { v4 as uuid } from "uuid";
 import { getCustomRepository, Repository } from "typeorm";
 import { MessageRepository } from "../repositories/MessageRepositories";
 import { Message } from "../entities/Message";
@@ -36,11 +36,11 @@ class MessagesServices {
 
         });
 
-        // insert id
+        // // insert id
 
-        if (!message.id) {            
-            message.id = uuid();
-        };
+        // if (!message.id) {            
+        //     message.id = uuid();
+        // };
         
         await this.messageRepository.save(message);
 

@@ -5,7 +5,7 @@
     We use this D because we use that in a develop path.
 */
 
-import express, { request, response } from "express";
+import express from "express";
 
 // import o http to creating server.
 // Import o serve to socket.io
@@ -73,16 +73,16 @@ app.get("/pages/admin", (request, response) => {
 
 // Creating server http
 
-const http = createServer(app); // => protocol http
+const http = createServer(app); // => Creating protocol http
 
 // Creating server oi so socket
 
-const io = new Server(http); // => protocol ws (websocket)
+const io = new Server(http); // => Creating protocol ws (websocket)
 
 // Method connection.
 
 io.on("connection", (socket: Socket) => {
-    console.log("Você está conectado ", socket.id);
+    console.log("You are connecting with serve", socket.id);
 });
 
 // Enable json

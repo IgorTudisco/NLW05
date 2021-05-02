@@ -132,41 +132,40 @@ io.on("connection", (socket) => {
         const allUsers = await connectionServices.findAllWithoutAdmin();
 
         io.emit("admin_list_all_users", allUsers);
+    });
 
-        socket.on("client_send_to_admin", async (params) => {
+    socket.on("client_send_to_admin", async (params) => {
 
-            const { text, socket_admin_id } = params;
+        const { text, socket_admin_id } = params;
 
-            const socket_id = socket.id;
+        const socket_id = socket.id;
 
-            const { user_id } = await connectionServices.findBySocketID(socket_id);
+        const { user_id } = await connectionServices.findBySocketID(socket_id);
 
-            const message = await messageServices.create({
+        const message = await messageServices.create({
 
-                text,
-                user_id,
+            text,
+            user_id,
 
-            });
+        });
 
-            io.to(socket_admin_id).emit("adimin_receive_message", {
+        io.to(socket_admin_id).emit("adimin_receive_message", {
 
-                message,
-                socket_id,
+            message,
+            socket_id,
 
-            });
-            
-            // Improvements
-                    
-            socket.on("disconnect", async () => {
-
-                console.log(socket.id);
-
-                await connectionServices.deleteBySocketId(socket.id);
+        });
+        
+        // Improvements
                 
-            });
+        socket.on("disconnect", async () => {
+
+            console.log(socket.id);
+
+            await connectionServices.deleteBySocketId(socket.id);
             
         });
-               
+        
     });
 
 });

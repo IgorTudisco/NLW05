@@ -23,6 +23,8 @@ class MessageController {
 
     };
 
+    // localhost:3333/messages/user_id
+
     async showByUser(request: Request, response: Response) {
 
         const { id } = request.params;

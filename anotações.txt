@@ -1,3 +1,0 @@
-json-server --watch db.json
-
-Inícia o meu server em um primeiro momento.

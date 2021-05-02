@@ -27,18 +27,18 @@ class ConnectionsServices {
 
   async create ({socket_id, user_id, admin_id, id}: IConnectionCreate) {
 
-      const connection = this.connectionRepositories.create({
+    const connection = this.connectionRepositories.create({
 
-          socket_id,
-          user_id,
-          admin_id,
-          id,
+        socket_id,
+        user_id,
+        admin_id,
+        id,
 
-      });
+    });
 
-      await this.connectionRepositories.save(connection);
+    await this.connectionRepositories.save(connection);
 
-      return connection;
+    return connection;
       
   };
 
@@ -46,13 +46,13 @@ class ConnectionsServices {
 
   async findByUserId(user_id: string){
 
-      const connection = await this.connectionRepositories.findOne({
+    const connection = await this.connectionRepositories.findOne({
 
-          user_id,
+        user_id,
 
-      });
+    });
 
-      return connection;
+    return connection;
 
   }
 
