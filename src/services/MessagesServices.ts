@@ -1,56 +1,47 @@
-// Our services message
-
-// import { v4 as uuid } from "uuid";
 import { getCustomRepository, Repository } from "typeorm";
-import { MessageRepository } from "../repositories/MessageRepositories";
 import { Message } from "../entities/Message";
+import { MessageRepository } from "../repositories/MessageRepositories";
+import { v4 as uuid } from "uuid";
 
 interface IMessageCreate {
+  admin_id?: string;
+  text: string;
+  user_id: string;
+}
 
-    admin_id?: string,
-    text: string,
-    user_id: string
-};
+class MessagesService {
+  private messagesRepository: Repository<Message>;
 
-class MessagesServices {
+  constructor() {
+    this.messagesRepository = getCustomRepository(MessageRepository);
+  }
 
-    private messageRepository: Repository<Message>;
-    constructor() {
+  async create({ admin_id, text, user_id }: IMessageCreate) {
+    const message = this.messagesRepository.create({
+      admin_id,
+      text,
+      user_id,
+    });
 
-        this.messageRepository = getCustomRepository(MessageRepository);
+    // insert id
 
-    };
-    
-    async create({ admin_id, text, user_id, }: IMessageCreate) {
-        const message = this.messageRepository.create({
-        
-            admin_id,
-            text,
-            user_id,
-
-        });
-
-        // // insert id
-
-        // if (!message.id) {            
-        //     message.id = uuid();
-        // };
-        
-        await this.messageRepository.save(message);
-        return message;
-
+    if (!message.id) {            
+      message.id = uuid();
     };
 
-    async listByUser(user_id: string){
-        const list = await this.messageRepository.find({
+    await this.messagesRepository.save(message);
 
-            where: { user_id },
-            relations: ["user"],
-        });
+    return message;
+  }
 
-        return list;
-    }
+  async listByUser(user_id: string) {
+    const list = await this.messagesRepository.find({
+      where: { user_id },
+      relations: ["user"],
+    });
 
-};
+    return list;
+  }
+}
 
-export { MessagesServices };
+export { MessagesService };

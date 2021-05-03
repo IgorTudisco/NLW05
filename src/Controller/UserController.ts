@@ -2,17 +2,15 @@ import { Request, Response } from "express";
 import { UsersServices } from "../services/UsersServices";
 
 class UserController {
-    async create (request: Request, response: Response) : Promise<Response> {
+  async create(request: Request, response: Response): Promise<Response> {
+    const { email } = request.body;
 
-        const { email } = request.body;
+    const usersService = new UsersServices();
 
-        const usersServices = new UsersServices();
+    const user = await usersService.create(email);
 
-        const user = await usersServices.create(email);
-
-        return response.json(user);
-
-    };
-};
+    return response.json(user);
+  }
+}
 
 export { UserController };
