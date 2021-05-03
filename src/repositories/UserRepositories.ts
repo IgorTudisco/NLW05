@@ -1,5 +1,3 @@
-// responsible for Users
-
 import { Repository, EntityRepository } from "typeorm";
 import { User } from "../entities/User";
 

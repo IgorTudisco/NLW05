@@ -1,5 +1,3 @@
-// Entity Message
-
 import { Entity, PrimaryColumn, CreateDateColumn, Column, JoinColumn, ManyToOne } from "typeorm";
 import { v4 as uuid } from "uuid";
 import { User } from "./User";
@@ -16,15 +14,9 @@ class Message {
     @Column()
     text: string;
 
-    // This is our attribute come from user and this is many to one in this relationship.
-    // They type is Users.
-    // Many message to one Users.
-
     @JoinColumn({ name: "user_id" })
     @ManyToOne( () => User )
     user: User;
-    
-    // The db who will do our relationship.
 
     @Column()
     user_id: string;

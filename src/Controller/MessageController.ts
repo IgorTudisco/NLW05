@@ -1,5 +1,3 @@
-// Controller of message 
-
 import { Request, Response } from "express";
 import { MessagesServices } from "../services/MessagesServices";
 
@@ -22,8 +20,6 @@ class MessageController {
         return response.json(message);
 
     };
-
-    // localhost:3333/messages/user_id
 
     async showByUser(request: Request, response: Response) {
 

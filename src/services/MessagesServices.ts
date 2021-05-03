@@ -5,10 +5,6 @@ import { getCustomRepository, Repository } from "typeorm";
 import { MessageRepository } from "../repositories/MessageRepositories";
 import { Message } from "../entities/Message";
 
-
-// The admin_id is optional because in the first message probably we don't have a attendant yet.
-// The icon ? do this.	"admin_id": "221c0adc-5640-435f-bc97-9eeff9bd0ec8"
-
 interface IMessageCreate {
 
     admin_id?: string,
@@ -17,8 +13,6 @@ interface IMessageCreate {
 };
 
 class MessagesServices {
-
-    // Creating a attribute private and your constructor.
 
     private messageRepository: Repository<Message>;
     constructor() {
@@ -43,23 +37,18 @@ class MessagesServices {
         // };
         
         await this.messageRepository.save(message);
-
         return message;
 
     };
 
     async listByUser(user_id: string){
-
-
         const list = await this.messageRepository.find({
 
             where: { user_id },
             relations: ["user"],
-
         });
 
         return list;
-
     }
 
 };
